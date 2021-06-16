@@ -6,7 +6,110 @@ const fakeRequest = require('supertest');
 const app = require('../lib/app');
 const client = require('../lib/client');
 
-describe('app routes', () => {
+const music = [
+  {
+    name: 'The Smiths',
+    description: 'A new wave/emo band from the UK',
+    id: 1,
+    category: 'newwave',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'The Growlers',
+    description: 'surf rock',
+    id: 2,
+    category: 'beachgoth',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'Miles Davis',
+    description: 'Jazz from the 1950s',
+    id: 3,
+    category: 'Jazz',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'Streetlight Manifesto',
+    description: 'high energy ska',
+    id: 4,
+    category: 'ska/punk',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'The Specials',
+    description: 'first wave ska',
+    id: 5,
+    category: 'ska',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'Interpol',
+    description: 'Indi rock from the UK',
+    id: 6,
+    category: 'Indi Rock',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'Joy Division',
+    description: 'Sad boi tunes',
+    id: 7,
+    category: 'First wave emo',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'The Cure',
+    description: 'Sad boi tunes',
+    id: 8,
+    category: 'First wave emo',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'The Cramps',
+    description: 'surf punk',
+    id: 9,
+    category: 'Pysch/Rock',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'Snail Mail',
+    description: 'Dreamy',
+    id: 10,
+    category: 'rock',
+    owner_id: 1,
+    price: 15.00
+  },
+  {
+    name: 'Angel Olsen',
+    description: 'Dreamy',
+    id: 11,
+    category: 'Mysitc/dark',
+    owner_id: 1,
+    price: 15.00
+  },
+];
+
+const music2 = {
+  name: 'The Growlers',
+  description: 'surf rock',
+  id: 2,
+  category: 'beachgoth',
+  owner_id: 1,
+  price: 15.00
+};
+
+
+
+
+describe ('app routes', () => {
   describe('routes', () => {
     let token;
   
@@ -31,31 +134,23 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test('returns animals', async() => {
+    test('returns growlers', async() => {
 
-      const expectation = [
-        {
-          'id': 1,
-          'name': 'bessie',
-          'coolfactor': 3,
-          'owner_id': 1
-        },
-        {
-          'id': 2,
-          'name': 'jumpy',
-          'coolfactor': 4,
-          'owner_id': 1
-        },
-        {
-          'id': 3,
-          'name': 'spot',
-          'coolfactor': 10,
-          'owner_id': 1
-        }
-      ];
+      const expectation = music2;
 
       const data = await fakeRequest(app)
-        .get('/animals')
+        .get('/music/2')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+    test('returns single music', async() => {
+
+      const expectation = music;
+
+      const data = await fakeRequest(app)
+        .get('/music')
         .expect('Content-Type', /json/)
         .expect(200);
 
