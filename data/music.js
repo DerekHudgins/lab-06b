@@ -53,17 +53,4 @@ module.exports = [
     category: 'Pysch/Rock',
     price: 15.00
   },
-  {
-    name: 'Snail Mail',
-    description: 'Dreamy',
-    category: 'rock',
-    price: 15.00
-  },
-  {
-    name: 'Angel Olsen',
-    description: 'Dreamy',
-    category: 'Mysitc/dark',
-    price: 15.00
-  },
-
 ];

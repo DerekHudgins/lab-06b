@@ -27,10 +27,8 @@ async function run() {
                     id SERIAL PRIMARY KEY NOT NULL,
                     name VARCHAR(512) NOT NULL,
                     description VARCHAR(512) NOT NULL,
-                    category VARCHAR(512) NOT NULL,
-                    price INTEGER NOT NULL,
-                    owner_id INTEGER NOT NULL REFERENCES users(id)
                     category_id INTEGER NOT NULL REFERENCES categories(id),
+                    price INTEGER NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
             );
         `);

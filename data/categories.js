@@ -20,4 +20,10 @@ module.exports = [
   {
     name: 'newwave'  
   },
+  {
+    name: 'First wave emo'  
+  },
+  {
+    name: 'Pysch/Rock'  
+  },
 ];
