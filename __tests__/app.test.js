@@ -101,7 +101,7 @@ const music2 = {
   name: 'The Growlers',
   description: 'surf rock',
   id: 2,
-  category: 'beachgoth',
+  category_id: 'beachgoth',
   owner_id: 1,
   price: 15.00
 };
